@@ -13,6 +13,10 @@ app.use(cors());
 
 // Body
 
+app.get('/', (req, res) => {
+	res.send('Hello Express!');
+});
+
 app.get('/books', (req, res) => {
 	const { search = '', sort } = req.query;
 
@@ -84,9 +88,11 @@ app.get('/apps', (req, res) => {
 		// console.log(element.Rating);
 		console.log(element.App);
 	});
-	res.status(200).send(data);
+	res.json(data);
 });
 
 app.listen(8000, () => {
 	console.log('Server started on PORT 8000');
 });
+
+module.exports = app;
